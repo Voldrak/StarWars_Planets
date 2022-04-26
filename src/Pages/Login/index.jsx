@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import styles from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +8,10 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     let navigate = useNavigate();
+
+    const registration = () => {
+        navigate('/register');
+    }
 
     const loginFunction = (event) => {
         event.preventDefault();
@@ -47,8 +50,8 @@ const Login = () => {
                     required
                 />
                 <div>
-                    <button className={styles.register}>
-                    <Link to="/register"> Registrati</Link>
+                    <button className={styles.register} onClick={registration}>
+                        Registrati
                     </button>
                         o
                     <button
