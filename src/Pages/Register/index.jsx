@@ -78,7 +78,7 @@ const Register = () => {
                 />
 
                 <button onClick={returnLogin}>Torna al login</button>
-                <button onClick={register}>Continua</button>
+                <button onClick={register}>Register</button>
 
             </form>
         
