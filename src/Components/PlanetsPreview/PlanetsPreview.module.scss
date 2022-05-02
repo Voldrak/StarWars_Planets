@@ -5,6 +5,12 @@
     color: white;
     font-size: 22px;
     border-radius: 20px;
+    background: rgba(0, 0, 0, 0.375);
+    transition: 0.35s;
+
+    &:hover{
+        transform: scale(1.1)
+    }
 }
 @media screen and (max-width: 1050px){
     .PlanetsPreview{

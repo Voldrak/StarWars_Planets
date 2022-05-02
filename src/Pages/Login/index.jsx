@@ -52,10 +52,6 @@ const Login = () => {
                     required
                 /></label>
                 <div className={styles.wrapper_btnLogin}>
-                    <button className={styles.btnLog} onClick={registration}>
-                        Registrati
-                    </button>
-                        
                     <button
                         className={styles.btnLog}
                         type="submit"
@@ -63,6 +59,10 @@ const Login = () => {
                     >
                         Accedi
                     </button>
+                    <button className={styles.btnLog} onClick={registration}>
+                        Registrati
+                    </button>
+                        
                 </div>
             </form>
 

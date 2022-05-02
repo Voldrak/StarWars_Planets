@@ -18,6 +18,7 @@ const Register = () => {
         navigate('/')
     }
 
+    // Registrazione account
     const handleRegister = (event) => {
         event.preventDefault();
         httpPOST("/registration/", registerUser);
@@ -26,6 +27,7 @@ const Register = () => {
 
     }
 
+    // Check dell'username
     const checkUsername = event => {
         event.preventDefault();
         httpPOST("/check-username/");
@@ -37,14 +39,13 @@ const Register = () => {
     }
         
 
-      console.log(registerUser);
 
     useEffect(() => {
         setRegisterUser({
-            "nome": nome,
-            "cognome": cognome,
             "username": nomeUtente,
             "password": password,
+            "nome": nome,
+            "cognome": cognome,
         })
     }, [nome, cognome, nomeUtente, password]);
 
@@ -97,8 +98,8 @@ const Register = () => {
                 /></label>
 
                 <div className={styles.wrapper_btnRegister}>
-                    <button className={styles.btnRegister} onClick={returnLogin}>Torna al login</button>
                     <button className={styles.btnRegister} type="submit" onClick={handleRegister}>Register</button>
+                    <button className={styles.btnRegister} onClick={returnLogin}>Torna al login</button>
                 </div>
             </form>
         

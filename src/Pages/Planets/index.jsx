@@ -33,8 +33,9 @@ const Planets = () => {
             setCurrentPage(pageNumber);
         }
 
-
+        // Lettura delle pagine con i pianeti
     useEffect(() =>{
+
         fetch("https://swapi.dev/api/planets/?page=" + currentPage)
         .then((response) => response.json())
         .then((data) => setPlanetsCard(data.results));

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const PlanetsPreview = (props) => {
 
     const [filmsCard, setFilmsCard] = useState([]);
+    const pianeti = [filmsCard];
 
     const data = props.data || {
         name: "Pippo",
@@ -14,14 +15,15 @@ const PlanetsPreview = (props) => {
         films: ["primo film"],
     }
 
+    // Lettura delle API dei films
     useEffect(() =>{
         Promise.all(data.films.map(url =>fetch(url)
             .then(resp => resp.json())
             .then(data => setFilmsCard(data.title))
             ))
 },[])
-console.log(filmsCard)
-   
+
+// console.log(filmsCard);
 
     return (
         <div className={styles.PlanetsPreview} >
@@ -29,7 +31,7 @@ console.log(filmsCard)
             <p> Population: {data.population}</p>
             <p> Diameter: {data.diameter}</p>
             <p> Terrain: {data.terrain}</p>
-            <p> Film:{filmsCard}</p>
+            <p> Film:{pianeti}</p>
         </div>
     )
 }
