@@ -29,7 +29,7 @@ const Login = () => {
             <form className={styles.Login_form}>
                 <h1>Accedi</h1>
 
-                <label htmlFor="nome_utente">Nome Utente</label>
+                <label htmlFor="nome_utente">Nome Utente
                 <input
                     value={nameUtente}
                     onChange={(event) => setNameUtente(event.target.value)}
@@ -37,24 +37,27 @@ const Login = () => {
                     name="nome_utente"
                     autoComplete="off"
                     placeholder="Nome utente"
+                    className={styles.inputLogin}
                     required
-                />
+                /></label>
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password
                 <input
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     type="password"
                     name="password"
                     placeholder="Password"
+                    className={styles.inputLogin}
                     required
-                />
-                <div>
-                    <button className={styles.register} onClick={registration}>
+                /></label>
+                <div className={styles.wrapper_btnLogin}>
+                    <button className={styles.btnLog} onClick={registration}>
                         Registrati
                     </button>
-                        o
+                        
                     <button
+                        className={styles.btnLog}
                         type="submit"
                         onClick={loginFunction}
                     >

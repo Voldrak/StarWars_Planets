@@ -1,7 +1,15 @@
 .PlanetsPreview{
-    // display: flex;
-    // flex-wrap: wrap;
-    width: 20vw;
+    width: 25vw;
     height: 300px;
-    border: black 1px solid;
+    border: rgb(255, 255, 255) 1px solid;
+    color: white;
+    font-size: 22px;
+    border-radius: 20px;
+}
+@media screen and (max-width: 1050px){
+    .PlanetsPreview{
+        margin: auto;
+        width: 80%;
+        height: auto;
+    }
 }

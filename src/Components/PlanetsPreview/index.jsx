@@ -1,30 +1,26 @@
 import styles from './PlanetsPreview.module.scss';
 import { useState, useEffect } from "react";
-import axios from 'axios';
 
 
 const PlanetsPreview = (props) => {
 
-
-    const [filmsCard, setFilmsCard] = useState()
-
+    const [filmsCard, setFilmsCard] = useState([]);
 
     const data = props.data || {
         name: "Pippo",
-        population: 1000,
+        population: 100,
         diameter: 3300,
         terrain: "jungle",
         films: ["primo film"],
     }
 
     useEffect(() =>{
-    Promise.all(data.films.map(url => fetch(url)
-    .then(response => response.json())
-    .then(data => setFilmsCard(data.title))))            
+        Promise.all(data.films.map(url =>fetch(url)
+            .then(resp => resp.json())
+            .then(data => setFilmsCard(data.title))
+            ))
 },[])
-
-// console.log(filmsCard);
-// console.log(data);
+console.log(filmsCard)
    
 
     return (
@@ -33,10 +29,7 @@ const PlanetsPreview = (props) => {
             <p> Population: {data.population}</p>
             <p> Diameter: {data.diameter}</p>
             <p> Terrain: {data.terrain}</p>
-            <p> Film: {filmsCard}</p>
-            {/* {filmsCard.map((c) =>(
-                <p>{c.title}</p>
-            ))} */}
+            <p> Film:{filmsCard}</p>
         </div>
     )
 }

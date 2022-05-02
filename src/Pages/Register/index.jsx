@@ -10,8 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
-    const [checkName, setCheckName] = useState();
-    // const [error, setError] = useState("");
+    const [registerUser, setRegisterUser] = useState({})
 
     let navigate = useNavigate();
 
@@ -19,67 +18,88 @@ const Register = () => {
         navigate('/')
     }
 
-    const register = (event) => {
+    const handleRegister = (event) => {
         event.preventDefault();
+        httpPOST("/registration/", registerUser);
+        alert("account creato")
+        navigate('/')
+
     }
 
-    const checkUsername = (event) => {
-        setNomeUtente(event.target.value);
-        // httpPOST("/check-username", checkName);
-      };
+    const checkUsername = event => {
+        event.preventDefault();
+        httpPOST("/check-username/");
+        if (nomeUtente === "prova"){
+            alert("Username non valido")
+        } else {
+            alert("Success")
+        }
+    }
+        
 
-      console.log(nomeUtente);
+      console.log(registerUser);
 
     useEffect(() => {
-        }, []);
+        setRegisterUser({
+            "nome": nome,
+            "cognome": cognome,
+            "username": nomeUtente,
+            "password": password,
+        })
+    }, [nome, cognome, nomeUtente, password]);
 
     return(
         <div className={styles.register_Page}>
-            <form>
+            <form className={styles.register_Form}>
                 <h2>Registrati</h2>
-                <label htmlFor="Nome_Utente">Nome Utente</label>
+                <label htmlFor="Nome_Utente">Nome Utente
                 <input        
                     value={nomeUtente}
-                    onChange={checkUsername}
+                    onChange={(event) => setNomeUtente(event.target.value)}
                     type="text"
                     name="Nome_Utente"
                     placeholder="Nome Utente"
+                    className={styles.inputRegister}
                     required
-                />
+                /> <button onClick={checkUsername}>Check</button></label>
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password
                 <input        
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     type="password"
                     name="password"
                     placeholder="password"
+                    className={styles.inputRegister}
                     required
-                />
+                /></label>
 
-                <label htmlFor="Nome">Nome</label>
+                <label htmlFor="Nome">Nome
                 <input
                     value={nome}
                     onChange={(event) => setNome(event.target.value)}
                     type="text"
                     name="Nome"
                     placeholder="Nome"
+                    className={styles.inputRegister}
                     required
-                />
+                /></label>
 
-                <label htmlFor="Cognome">Cognome</label>
+                <label htmlFor="Cognome">Cognome
                 <input
                     value={cognome}
                     onChange={(event) => setCognome(event.target.value)}
                     type="text"
                     name="Cognome"
                     placeholder="Cognome"
+                    className={styles.inputRegister}
                     required
-                />
+                /></label>
 
-                <button onClick={returnLogin}>Torna al login</button>
-                <button onClick={register}>Register</button>
-
+                <div className={styles.wrapper_btnRegister}>
+                    <button className={styles.btnRegister} onClick={returnLogin}>Torna al login</button>
+                    <button className={styles.btnRegister} type="submit" onClick={handleRegister}>Register</button>
+                </div>
             </form>
         
         </div>

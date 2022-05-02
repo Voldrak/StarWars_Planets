@@ -1,9 +1,9 @@
 import { useState, useEffect, createContext } from "react";
 import Header from "../../Components/Header";
-
+import Footer from "../../Components/Footer";
 import PlanetsPreview from "../../Components/PlanetsPreview";
 import Pagination from "./../../Components/Pagination";
-import styles from "./Home.module.scss";
+import styles from "./Planets.module.scss";
 
 export const Context = createContext({ value: "", setValue: () => {} });
 const planet = [];
@@ -47,7 +47,7 @@ const Planets = () => {
         <div>
             <Context.Provider value={{ value, setValue }}>
             <Header/>
-                <h1>Planets</h1>
+                <h1 className={styles.title}>Planets</h1>
                 <div className={styles.wrapper_Planets}>
                 {planetsCard.map(( planet,index) =>
                       planet.name.toLowerCase().includes(value.toLowerCase()) && (
@@ -57,7 +57,7 @@ const Planets = () => {
             <Pagination goToPreviousPage={goToPreviousPage} changePage={changePage} goToNextPage={goToNextPage}/>
                 </div>
             </Context.Provider>
-
+            <Footer/>
         </div>
         )
 }

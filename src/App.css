@@ -1,3 +1,8 @@
 .App {
+  height: auto;
+  min-height: 100vh;
   text-align: center;
+  background-image: url("./Components/img/spazio_star_wars.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
